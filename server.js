@@ -1,18 +1,29 @@
 require('dotenv').config();
-const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
-const Class = require('./models/Class');
-
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB Atlas'))
-  .catch(err => console.error('MongoDB connection error:', err));
+const client = new MongoClient(process.env.MONGODB_URI);
+let lessonsCollection;
 
+async function startServer() {
+  try {
+    await client.connect();
+    console.log('Connected to MongoDB Atlas');
+    const db = client.db('Classes');
+    lessonsCollection = db.collection('CWFS');
+
+    app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+  }
+}
+
+startServer();
 
 // GET /search route: Handles search, filters, and sorting
 app.get('/search', async (req, res) => {
@@ -56,12 +67,10 @@ app.get('/search', async (req, res) => {
     else if (sortParam === 'availability-desc') sort.availablePlaces = -1;
 
     // Fetch and return results
-    const results = await Class.find(query).sort(sort);
+    const results = await lessonsCollection.find(query).sort(sort).toArray();
     res.json(results);
   } catch (error) {
     console.error('Search error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
-
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
