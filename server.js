@@ -25,6 +25,12 @@ async function startServer() {
 
 startServer();
 
+// Logger middleware: logs method, URL, and timestamp for every request
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+
 // GET /search route: Handles search, filters, and sorting
 app.get('/search', async (req, res) => {
   try {
