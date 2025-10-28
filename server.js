@@ -1,14 +1,18 @@
-const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
+const express = require('express');
 const cors = require('cors');
 const Class = require('./models/Class');
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/classshop');
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
 
 // GET /search route: Handles search, filters, and sorting
 app.get('/search', async (req, res) => {
@@ -55,6 +59,7 @@ app.get('/search', async (req, res) => {
     const results = await Class.find(query).sort(sort);
     res.json(results);
   } catch (error) {
+    console.error('Search error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
