@@ -16,8 +16,9 @@ async function startServer() {
     console.log('Connected to MongoDB Atlas');
     const db = client.db('Classes');
     lessonsCollection = db.collection('CWFS');
-
-    app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+    
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Server running on port ${port}`));
   } catch (err) {
     console.error('MongoDB connection error:', err);
   }
