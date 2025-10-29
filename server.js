@@ -9,14 +9,15 @@ app.use(express.json());
 
 const client = new MongoClient(process.env.MONGODB_URI);
 let lessonsCollection;
+let db;
 
 async function startServer() {
   try {
     await client.connect();
     console.log('Connected to MongoDB Atlas');
-    const db = client.db('Classes');
+    db = client.db('Classes');
     lessonsCollection = db.collection('CWFS');
-    
+
     const port = process.env.PORT || 3000;
     app.listen(port, () => console.log(`Server running on port ${port}`));
   } catch (err) {
@@ -30,6 +31,25 @@ startServer();
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
+});
+
+// get cart for user
+app.get('/cart', async (req, res) => {
+  const userId = req.query.userId;
+  if (!userId) return res.status(400).json({ error: 'Missing userId' });
+  const cart = await db.collection('carts').findOne({ userId });
+  res.json(cart ? cart.items : []);
+});
+
+app.post('/cart', async (req, res) => {
+  const { userId, items } = req.body;
+  if (!userId || !Array.isArray(items)) return res.status(400).json({ error: 'Invalid payload' });
+  await db.collection('carts').updateOne(
+    { userId },
+    { $set: { items } },
+    { upsert: true }
+  );
+  res.json({ success: true });
 });
 
 // GET /search route: Handles search, filters, and sorting
