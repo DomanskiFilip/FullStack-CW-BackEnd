@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
 
@@ -53,7 +53,7 @@ app.post('/cart', async (req, res) => {
 });
 
 // GET /search route: Handles search, filters, and sorting
-app.get('/search', async (req, res) => {
+app.get('/lessons', async (req, res) => {
   try {
     let query = {};
 
@@ -98,6 +98,50 @@ app.get('/search', async (req, res) => {
     res.json(results);
   } catch (error) {
     console.error('Search error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+// Save order and user info
+app.post('/order', async (req, res) => {
+  const { userId, userInfo } = req.body;
+  if (!userId || !userInfo) return res.status(400).json({ error: 'Missing userId or userInfo' });
+
+  const cartDoc = await db.collection('carts').findOne({ userId });
+  if (!cartDoc || !cartDoc.items || cartDoc.items.length === 0) {
+    return res.status(400).json({ error: 'Cart is empty' });
+  }
+
+  const order = {
+    userId,
+    userInfo,
+    items: cartDoc.items,
+    createdAt: new Date()
+  };
+  const result = await db.collection('orders').insertOne(order);
+
+  res.json({ success: true, orderId: result.insertedId });
+});
+
+// update available spaces in ordered lessons
+app.put('/lesson/:id', async (req, res) => {
+  const lessonId = req.params.id;
+  const update = req.body;
+  if (!lessonId || !update || typeof update !== 'object') {
+    return res.status(400).json({ error: 'Missing lessonId or update data' });
+  }
+
+  try {
+    const result = await lessonsCollection.updateOne(
+      { _id: new ObjectId(lessonId) },
+      { $set: update }
+    );
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ error: 'Lesson not found' });
+    }
+    res.json({ success: true });
+  } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
 });
