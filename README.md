@@ -21,6 +21,9 @@ It is a Node.js/Express API connected to a MongoDB Atlas database and deployed o
 The backend is live at:  
 **https://fullstack-cw-backend-d2z9.onrender.com/lessons**
 
+frontend repository:
+**https://github.com/DomanskiFilip/FullStack-CW-FrontEnd**
+
 ## API Endpoints
 
 - `GET /lessons` — List/search lessons
