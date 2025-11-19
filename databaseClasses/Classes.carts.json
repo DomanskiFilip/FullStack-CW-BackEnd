@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "6901f4c842bfb968c11652d3"
+  },
+  "userId": "4d2ffd13-8ac8-44a9-9140-be90b85e28b4",
+  "items": []
+},
+{
+  "_id": {
+    "$oid": "6901fe2842bfb968c11654d2"
+  },
+  "userId": "f9d886ae-2e0c-474a-8274-9211a6ee56ab",
+  "items": [
+    {
+      "_id": "69012ca542bfb968c11626dc",
+      "id": 25,
+      "subject": "Art",
+      "location": "Warsaw Campus",
+      "price": 96,
+      "availablePlaces": 7
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690b37d7f5c7029079938421"
+  },
+  "userId": "86fff5ca-b427-4afd-8870-34e04286569c",
+  "items": [
+    {
+      "_id": "69012ca542bfb968c11626d4",
+      "id": 17,
+      "subject": "English",
+      "location": "Paris Campus",
+      "price": 108,
+      "availablePlaces": 3,
+      "quantity": 1
+    },
+    {
+      "_id": "69012ca542bfb968c11626dc",
+      "id": 25,
+      "subject": "Art",
+      "location": "Warsaw Campus",
+      "price": 96,
+      "availablePlaces": 7,
+      "quantity": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690bbfd8f5c7029079939c5f"
+  },
+  "userId": "a56c2582-4865-4794-84c3-8114f40c173e",
+  "items": []
+},
+{
+  "_id": {
+    "$oid": "691e48e7907584a99b7aa05c"
+  },
+  "userId": "23123",
+  "items": [
+    {
+      "_id": "lessonId1",
+      "subject": "Math"
+    },
+    {
+      "_id": "lessonId2",
+      "subject": "English"
+    }
+  ]
+}]
