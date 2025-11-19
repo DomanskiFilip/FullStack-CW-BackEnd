@@ -49,3 +49,6 @@ node server.js
 ```
 
 ---
+
+## MongoDB Classes
+mongo db classes as of 19.11.2025 are stored in database classes folder
