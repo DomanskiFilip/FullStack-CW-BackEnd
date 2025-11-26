@@ -43,7 +43,7 @@ const availableImages = fs.existsSync(IMAGE_DIR)
 function resolveLessonImage(lesson, index, baseUrl) {
   if (lesson.image) {
     const normalized = lesson.image.replace(/^\/?images\//, '');
-    return lesson.image.startsWith('http')
+    return lesson.image.startsWith('https')
       ? lesson.image
       : `${baseUrl}/images/${normalized}`;
   }
