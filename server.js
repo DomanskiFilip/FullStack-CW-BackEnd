@@ -42,17 +42,11 @@ const availableImages = fs.existsSync(IMAGE_DIR)
 
 // Helper to handle lesson image URL
 function resolveLessonImage(lesson, index, baseUrl) {
-  if (lesson.image) {
-    const normalized = lesson.image.replace(/^\/?images\//, '');
-    return lesson.image.startsWith('https')
-      ? lesson.image
-      : `${baseUrl}/images/${normalized}`;
-  }
-  if (!availableImages.length) return null;
-  // if lessons dont have img assigned but there are images in backend then assign based on order
-  const anchor = typeof lesson.id === 'number' ? lesson.id - 1 : index;
-  const file = availableImages[((anchor % availableImages.length) + availableImages.length) % availableImages.length];
-  return `${baseUrl}/images/${file}`;
+  if (!lesson.image) return null;
+  const normalized = lesson.image.replace(/^\/?images\//, '');
+  return normalized.startsWith('http')
+    ? normalized
+    : `${baseUrl}/images/${normalized}`;
 }
 
 // Serve static images
