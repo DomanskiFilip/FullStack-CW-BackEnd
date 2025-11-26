@@ -2,6 +2,8 @@ require('dotenv').config();
 const { MongoClient, ObjectId } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
 app.use(cors());
@@ -33,8 +35,23 @@ app.use((req, res, next) => {
   next();
 });
 
-const path = require('path');
-app.use('/images', express.static(path.join(__dirname, 'images')));
+const IMAGE_DIR = path.join(__dirname, 'images');
+const availableImages = fs.existsSync(IMAGE_DIR)
+  ? fs.readdirSync(IMAGE_DIR).filter(file => /\.(png|jpe?g|webp|gif|svg)$/i.test(file))
+  : [];
+
+function resolveLessonImage(lesson, index, baseUrl) {
+  if (lesson.image) {
+    const normalized = lesson.image.replace(/^\/?images\//, '');
+    return lesson.image.startsWith('http')
+      ? lesson.image
+      : `${baseUrl}/images/${normalized}`;
+  }
+  if (!availableImages.length) return null;
+  const anchor = typeof lesson.id === 'number' ? lesson.id - 1 : index;
+  const file = availableImages[((anchor % availableImages.length) + availableImages.length) % availableImages.length];
+  return `${baseUrl}/images/${file}`;
+}
 
 // Error handler for missing images
 app.use('/images/:imageName', (req, res, next) => {
@@ -111,7 +128,12 @@ app.get('/lessons', async (req, res) => {
 
     // Fetch and return results
     const results = await lessonsCollection.find(query).sort(sort).toArray();
-    res.json(results);
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const resultsWithImages = results.map((lesson, idx) => {
+      const image = resolveLessonImage(lesson, idx, baseUrl);
+      return image ? { ...lesson, image } : lesson;
+    });
+    res.json(resultsWithImages);
   } catch (error) {
     console.error('Search error:', error);
     res.status(500).json({ error: 'Server error' });
