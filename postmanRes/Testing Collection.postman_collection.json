@@ -1,0 +1,832 @@
+{
+	"info": {
+		"_postman_id": "caf0238b-1644-4f0b-8fba-38753b49533c",
+		"name": "Testing Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50005428"
+	},
+	"item": [
+		{
+			"name": "GET cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fullstack-cw-backend-d2z9.onrender.com/cart?userId=86fff5ca-b427-4afd-8870-34e04286569c",
+					"protocol": "https",
+					"host": [
+						"fullstack-cw-backend-d2z9",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"cart"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "86fff5ca-b427-4afd-8870-34e04286569c"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET cart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fullstack-cw-backend-d2z9.onrender.com/cart?userId=86fff5ca-b427-4afd-8870-34e04286569c",
+							"protocol": "https",
+							"host": [
+								"fullstack-cw-backend-d2z9",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"cart"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "86fff5ca-b427-4afd-8870-34e04286569c"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 26 Nov 2025 10:46:50 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "111",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a48cde6e877ddec-LHR",
+							"type": "text"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"type": "text"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br",
+							"type": "text"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"c3-H4cvQm3RzyeACJI87MSRZaIJSuk\"",
+							"type": "text"
+						},
+						{
+							"key": "rndr-id",
+							"value": "c28ed242-de4f-414d",
+							"type": "text"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"type": "text"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render",
+							"type": "text"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC",
+							"type": "text"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"type": "text"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"4\",\n        \"subject\": \"Math\",\n        \"location\": \"London\",\n        \"price\": 10,\n        \"quantity\": 1,\n        \"availablePlaces\": 5\n    },\n    {\n        \"_id\": \"27\",\n        \"subject\": \"English\",\n        \"location\": \"Manchester\",\n        \"price\": 12,\n        \"quantity\": 1,\n        \"availablePlaces\": 3\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "POST cart",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"86fff5ca-b427-4afd-8870-34e04286569c\",\n  \"items\": [\n    {\n      \"_id\": \"4\",\n      \"subject\": \"Math\",\n      \"location\": \"London\",\n      \"price\": 10,\n      \"quantity\": 1,\n      \"availablePlaces\": 5\n    },\n    {\n      \"_id\": \"27\",\n      \"subject\": \"English\",\n      \"location\": \"Manchester\",\n      \"price\": 12,\n      \"quantity\": 1,\n      \"availablePlaces\": 3\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fullstack-cw-backend-d2z9.onrender.com/cart",
+					"protocol": "https",
+					"host": [
+						"fullstack-cw-backend-d2z9",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST cart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"86fff5ca-b427-4afd-8870-34e04286569c\",\n  \"items\": [\n    {\n      \"_id\": \"4\",\n      \"subject\": \"Math\",\n      \"location\": \"London\",\n      \"price\": 10,\n      \"quantity\": 1,\n      \"availablePlaces\": 5\n    },\n    {\n      \"_id\": \"27\",\n      \"subject\": \"English\",\n      \"location\": \"Manchester\",\n      \"price\": 12,\n      \"quantity\": 1,\n      \"availablePlaces\": 3\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fullstack-cw-backend-d2z9.onrender.com/cart",
+							"protocol": "https",
+							"host": [
+								"fullstack-cw-backend-d2z9",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 26 Nov 2025 10:46:02 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a48ccb919fc63df-LHR",
+							"type": "text"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"type": "text"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br",
+							"type": "text"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\"",
+							"type": "text"
+						},
+						{
+							"key": "rndr-id",
+							"value": "38750512-36b9-48b6",
+							"type": "text"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"type": "text"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render",
+							"type": "text"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC",
+							"type": "text"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"type": "text"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "GET lessons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": [
+				{
+					"name": "GET lessons",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fullstack-cw-backend-d2z9.onrender.com/lessons",
+							"protocol": "https",
+							"host": [
+								"fullstack-cw-backend-d2z9",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"lessons"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 26 Nov 2025 10:49:50 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "856",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a48d24a2b1e63f8-LHR",
+							"type": "text"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"type": "text"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br",
+							"type": "text"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"17a7-UIxHum/s446CtGE9TCDNu7l8TT8\"",
+							"type": "text"
+						},
+						{
+							"key": "rndr-id",
+							"value": "444b1207-ee49-4b66",
+							"type": "text"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"type": "text"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render",
+							"type": "text"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC",
+							"type": "text"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"type": "text"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"69012ca542bfb968c11626c7\",\n        \"id\": 4,\n        \"subject\": \"Physics\",\n        \"location\": \"London Hendon Campus\",\n        \"price\": 140,\n        \"availablePlaces\": 7,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/big man.png\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626c9\",\n        \"id\": 6,\n        \"subject\": \"Physics\",\n        \"location\": \"Edinburgh Campus\",\n        \"price\": 155,\n        \"availablePlaces\": 9,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/canyon.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d4\",\n        \"id\": 17,\n        \"subject\": \"English\",\n        \"location\": \"Paris Campus\",\n        \"price\": 108,\n        \"availablePlaces\": 2,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/dethstar.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626de\",\n        \"id\": 27,\n        \"subject\": \"Art\",\n        \"location\": \"London Central Campus\",\n        \"price\": 108,\n        \"availablePlaces\": 9,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/glance.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626e0\",\n        \"id\": 29,\n        \"subject\": \"Music\",\n        \"location\": \"Krakow Campus\",\n        \"price\": 122,\n        \"availablePlaces\": 6,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/ariships.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626e1\",\n        \"id\": 30,\n        \"subject\": \"Music\",\n        \"location\": \"Manchester Campus\",\n        \"price\": 128,\n        \"availablePlaces\": 2,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/battle.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626c6\",\n        \"id\": 3,\n        \"subject\": \"Mathematics\",\n        \"location\": \"Cambridge Campus\",\n        \"price\": 135,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/battle.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626c8\",\n        \"id\": 5,\n        \"subject\": \"Physics\",\n        \"location\": \"Manchester Campus\",\n        \"price\": 148,\n        \"availablePlaces\": 3,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/blackhole.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626cc\",\n        \"id\": 9,\n        \"subject\": \"Chemistry\",\n        \"location\": \"Paris Campus\",\n        \"price\": 144,\n        \"availablePlaces\": 4,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/charge.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626ce\",\n        \"id\": 11,\n        \"subject\": \"Biology\",\n        \"location\": \"Cambridge Campus\",\n        \"price\": 131,\n        \"availablePlaces\": 2,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/curuscant.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626cf\",\n        \"id\": 12,\n        \"subject\": \"Biology\",\n        \"location\": \"Warsaw Campus\",\n        \"price\": 137,\n        \"availablePlaces\": 10,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/cybercity.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d2\",\n        \"id\": 15,\n        \"subject\": \"Computer Science\",\n        \"location\": \"Krakow Campus\",\n        \"price\": 176,\n        \"availablePlaces\": 7,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/day.png\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d9\",\n        \"id\": 22,\n        \"subject\": \"Geography\",\n        \"location\": \"Manchester Campus\",\n        \"price\": 115,\n        \"availablePlaces\": 7,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/eva.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626dc\",\n        \"id\": 25,\n        \"subject\": \"Art\",\n        \"location\": \"Warsaw Campus\",\n        \"price\": 96,\n        \"availablePlaces\": 6,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/gangster.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626dd\",\n        \"id\": 26,\n        \"subject\": \"Art\",\n        \"location\": \"Paris Campus\",\n        \"price\": 102,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/german.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626c4\",\n        \"id\": 1,\n        \"subject\": \"Mathematics\",\n        \"location\": \"London Hendon Campus\",\n        \"price\": 120,\n        \"availablePlaces\": 3,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/arcane.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626ca\",\n        \"id\": 7,\n        \"subject\": \"Chemistry\",\n        \"location\": \"London Central Campus\",\n        \"price\": 132,\n        \"availablePlaces\": 1,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/cat girl.jpeg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d1\",\n        \"id\": 14,\n        \"subject\": \"Computer Science\",\n        \"location\": \"Berlin Campus\",\n        \"price\": 168,\n        \"availablePlaces\": 5,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/darkness.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d6\",\n        \"id\": 19,\n        \"subject\": \"History\",\n        \"location\": \"Manchester Campus\",\n        \"price\": 118,\n        \"availablePlaces\": 3,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/domecity.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626db\",\n        \"id\": 24,\n        \"subject\": \"Geography\",\n        \"location\": \"Paris Campus\",\n        \"price\": 128,\n        \"availablePlaces\": 4,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/fontain leak.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626df\",\n        \"id\": 28,\n        \"subject\": \"Music\",\n        \"location\": \"Cambridge Campus\",\n        \"price\": 115,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/arcane.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626c5\",\n        \"id\": 2,\n        \"subject\": \"Mathematics\",\n        \"location\": \"Oxford Campus\",\n        \"price\": 128,\n        \"availablePlaces\": 10,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/ariships.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626cb\",\n        \"id\": 8,\n        \"subject\": \"Chemistry\",\n        \"location\": \"Berlin Campus\",\n        \"price\": 138,\n        \"availablePlaces\": 7,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/chansaw madness.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626cd\",\n        \"id\": 10,\n        \"subject\": \"Biology\",\n        \"location\": \"Oxford Campus\",\n        \"price\": 125,\n        \"availablePlaces\": 6,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/child soldier.png\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d0\",\n        \"id\": 13,\n        \"subject\": \"Computer Science\",\n        \"location\": \"London Central Campus\",\n        \"price\": 160,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/cyborg.png\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d3\",\n        \"id\": 16,\n        \"subject\": \"English\",\n        \"location\": \"Edinburgh Campus\",\n        \"price\": 102,\n        \"availablePlaces\": 4,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/decay.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d5\",\n        \"id\": 18,\n        \"subject\": \"English\",\n        \"location\": \"London Hendon Campus\",\n        \"price\": 112,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/disco future.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d7\",\n        \"id\": 20,\n        \"subject\": \"History\",\n        \"location\": \"Oxford Campus\",\n        \"price\": 124,\n        \"availablePlaces\": 1,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/dragon.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d8\",\n        \"id\": 21,\n        \"subject\": \"History\",\n        \"location\": \"Cambridge Campus\",\n        \"price\": 130,\n        \"availablePlaces\": 6,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/end.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626da\",\n        \"id\": 23,\n        \"subject\": \"Geography\",\n        \"location\": \"Berlin Campus\",\n        \"price\": 122,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/evening.png\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "GET lessons with specific parameter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": [
+				{
+					"name": "GET lessons with specific parameter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fullstack-cw-backend-d2z9.onrender.com/lessons?locations=London Hendon Campus",
+							"protocol": "https",
+							"host": [
+								"fullstack-cw-backend-d2z9",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"lessons"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "locations",
+									"value": "London Hendon Campus"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 26 Nov 2025 10:52:17 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "226",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a48d5e0ca19218d-LHR",
+							"type": "text"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"type": "text"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br",
+							"type": "text"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"26e-jNPaqS+GO85U4JgJzQmXivlm7VU\"",
+							"type": "text"
+						},
+						{
+							"key": "rndr-id",
+							"value": "3536e4f3-df19-40ad",
+							"type": "text"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"type": "text"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render",
+							"type": "text"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC",
+							"type": "text"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"type": "text"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"69012ca542bfb968c11626c7\",\n        \"id\": 4,\n        \"subject\": \"Physics\",\n        \"location\": \"London Hendon Campus\",\n        \"price\": 140,\n        \"availablePlaces\": 7,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/big man.png\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626c4\",\n        \"id\": 1,\n        \"subject\": \"Mathematics\",\n        \"location\": \"London Hendon Campus\",\n        \"price\": 120,\n        \"availablePlaces\": 3,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/arcane.jpg\"\n    },\n    {\n        \"_id\": \"69012ca542bfb968c11626d5\",\n        \"id\": 18,\n        \"subject\": \"English\",\n        \"location\": \"London Hendon Campus\",\n        \"price\": 112,\n        \"availablePlaces\": 0,\n        \"image\": \"https://fullstack-cw-backend-d2z9.onrender.com/images/disco future.jpg\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "POST order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": [
+				{
+					"name": "POST order",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"86fff5ca-b427-4afd-8870-34e04286569c\",\n  \"userInfo\": {\n    \"name\": \"Jane Doe\",\n    \"email\": \"jane@example.com\",\n    \"address\": \"123 Main St\",\n    \"creditCardNumber\": \"4111111111111111\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fullstack-cw-backend-d2z9.onrender.com/order",
+							"protocol": "https",
+							"host": [
+								"fullstack-cw-backend-d2z9",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 26 Nov 2025 10:54:00 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a48d8644d4abea8-LHR",
+							"type": "text"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"type": "text"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br",
+							"type": "text"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"35-0CRl1Ah6iQOL6fSCtZvJZbzbtOc\"",
+							"type": "text"
+						},
+						{
+							"key": "rndr-id",
+							"value": "ea40230b-a3e9-4639",
+							"type": "text"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"type": "text"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render",
+							"type": "text"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC",
+							"type": "text"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"type": "text"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"orderId\": \"6926dc482ad2526a7085830b\"\n}"
+				}
+			]
+		},
+		{
+			"name": "PUT avaliable spaces",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"availablePlaces\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fullstack-cw-backend-d2z9.onrender.com/lesson/69012ca542bfb968c11626c4",
+					"protocol": "https",
+					"host": [
+						"fullstack-cw-backend-d2z9",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lesson",
+						"69012ca542bfb968c11626c4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PUT avaliable spaces",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"availablePlaces\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fullstack-cw-backend-d2z9.onrender.com/lesson/69012ca542bfb968c11626c4",
+							"protocol": "https",
+							"host": [
+								"fullstack-cw-backend-d2z9",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"lesson",
+								"69012ca542bfb968c11626c4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 26 Nov 2025 11:01:45 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a48e3c12fcae008-LHR",
+							"type": "text"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"type": "text"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br",
+							"type": "text"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\"",
+							"type": "text"
+						},
+						{
+							"key": "rndr-id",
+							"value": "cfb77909-2386-49d9",
+							"type": "text"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"type": "text"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render",
+							"type": "text"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC",
+							"type": "text"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"type": "text"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true\n}"
+				}
+			]
+		}
+	]
+}

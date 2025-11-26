@@ -52,3 +52,6 @@ node server.js
 
 ## MongoDB Classes
 mongo db classes as of 19.11.2025 are stored in database classes folder
+
+## Link to Postman Testing
+https://domanskifilip-4251709.postman.co/workspace/267eb865-1914-4b58-89e7-36460d6b6c61/documentation/50005428-caf0238b-1644-4f0b-8fba-38753b49533c
