@@ -35,11 +35,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const IMAGE_DIR = path.join(__dirname, 'images');
-const availableImages = fs.existsSync(IMAGE_DIR)
-  ? fs.readdirSync(IMAGE_DIR).filter(file => /\.(png|jpe?g|webp|gif|svg)$/i.test(file))
-  : [];
-
 // Helper to handle lesson image URL
 function resolveLessonImage(lesson, index, baseUrl) {
   if (!lesson.image) return null;
@@ -53,15 +48,15 @@ function resolveLessonImage(lesson, index, baseUrl) {
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Error handler for missing images
-app.use('/images/:imageName', (req, res, next) => {
-    const imagePath = path.join(__dirname, 'images', req.params.imageName);
-    require('fs').access(imagePath, require('fs').constants.F_OK, (err) => {
-        if (err) {
-            res.status(404).json({ error: 'Image file does not exist' });
-        } else {
-            next();
-        }
-    });
+app.get('/images/:imageName', (req, res) => {
+  const imagePath = path.join(__dirname, 'images', req.params.imageName);
+  fs.access(imagePath, fs.constants.F_OK, (err) => {
+    if (err) {
+      res.status(404).json({ error: 'Image file does not exist' });
+    } else {
+      res.sendFile(imagePath);
+    }
+  });
 });
 
 // trust Render proxy needed for gihubpages
