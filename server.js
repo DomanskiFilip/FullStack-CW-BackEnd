@@ -53,6 +53,9 @@ function resolveLessonImage(lesson, index, baseUrl) {
   return `${baseUrl}/images/${file}`;
 }
 
+// Serve static images
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 // Error handler for missing images
 app.use('/images/:imageName', (req, res, next) => {
     const imagePath = path.join(__dirname, 'images', req.params.imageName);
@@ -65,6 +68,9 @@ app.use('/images/:imageName', (req, res, next) => {
     });
 });
 
+// trust Render proxy
+app.set('trust proxy', 1);
+const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || 'https://fullstack-cw-backend-d2z9.onrender.com';
 
 // get cart for user
 app.get('/cart', async (req, res) => {
@@ -128,7 +134,7 @@ app.get('/lessons', async (req, res) => {
 
     // Fetch and return results
     const results = await lessonsCollection.find(query).sort(sort).toArray();
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = PUBLIC_BASE_URL;
     const resultsWithImages = results.map((lesson, idx) => {
       const image = resolveLessonImage(lesson, idx, baseUrl);
       return image ? { ...lesson, image } : lesson;
