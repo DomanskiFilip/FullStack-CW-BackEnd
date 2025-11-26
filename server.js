@@ -40,6 +40,7 @@ const availableImages = fs.existsSync(IMAGE_DIR)
   ? fs.readdirSync(IMAGE_DIR).filter(file => /\.(png|jpe?g|webp|gif|svg)$/i.test(file))
   : [];
 
+// Helper to handle lesson image URL
 function resolveLessonImage(lesson, index, baseUrl) {
   if (lesson.image) {
     const normalized = lesson.image.replace(/^\/?images\//, '');
@@ -48,6 +49,7 @@ function resolveLessonImage(lesson, index, baseUrl) {
       : `${baseUrl}/images/${normalized}`;
   }
   if (!availableImages.length) return null;
+  // if lessons dont have img assigned but there are images in backend then assign based on order
   const anchor = typeof lesson.id === 'number' ? lesson.id - 1 : index;
   const file = availableImages[((anchor % availableImages.length) + availableImages.length) % availableImages.length];
   return `${baseUrl}/images/${file}`;
@@ -68,7 +70,7 @@ app.use('/images/:imageName', (req, res, next) => {
     });
 });
 
-// trust Render proxy
+// trust Render proxy needed for gihubpages
 app.set('trust proxy', 1);
 const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || 'https://fullstack-cw-backend-d2z9.onrender.com';
 
@@ -80,6 +82,7 @@ app.get('/cart', async (req, res) => {
   res.json(cart ? cart.items : []);
 });
 
+// save/update cart for user
 app.post('/cart', async (req, res) => {
   const { userId, items } = req.body;
   if (!userId || !Array.isArray(items)) return res.status(400).json({ error: 'Invalid payload' });
