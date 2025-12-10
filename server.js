@@ -86,8 +86,7 @@ app.post('/cart', async (req, res) => {
 // GET /search route: Handles search, filters, and sorting
 app.get('/lessons', async (req, res) => {
   try {
-    let query = {}; app = express();
-app.use(cors());
+    let query = {};
 
     // Search term (case-insensitive regex on subject/location)
     if (req.query.q) {
