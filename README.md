@@ -3,6 +3,9 @@
 This is the backend for the FullStack Coursework project.  
 It is a Node.js/Express API connected to a MongoDB Atlas database and deployed on [Render.com](https://render.com/).
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
+
 ## Features
 
 - RESTful API for lessons, cart, and orders
